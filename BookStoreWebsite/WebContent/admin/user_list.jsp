@@ -19,7 +19,7 @@
 	</div>
 
 	<div align="center">
-		<table border="1">
+		<table border="1" cellpadding="5">
 			<tr>
 				<th>Index</th>
 				<th>ID</th>
@@ -27,13 +27,16 @@
 				<th>Full Name</th>
 				<th>Actions</th>
 			</tr>
-			<c:forEach var="user" items="$(listUsers)" varStatus="status">
+			<c:forEach var="user" items="${listUsers}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
 					<td>${user.userId}</td>
 					<td>${user.email}</td>
-					<td>0</td>
-					<td>0</td>
+					<td>${user.fullName}</td>
+					<td>
+						<a href="">­×§ï</a>
+						<a href="">§R°£</a>
+					</td>
 				</tr>
 			</c:forEach>
 
