@@ -27,11 +27,19 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 	public Users get(Object userId) {
 		return super.find(Users.class, userId);
 	}
+	
+	public Users findByEmail(String email) {
+		List<Users> listUsers = super.findWithNameQuery("Users.findByEmail","email",email);
+		
+		if(listUsers!= null && listUsers.size() > 0) {
+			return listUsers.get(0);
+		}
+		return null;
+	}
 
 	@Override
 	public void delete(Object userId) {
 		super.delete(Users.class, userId);
-		
 	}
 
 	@Override
@@ -42,7 +50,8 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 	@Override
 	public long count() {
 		return super.countWithNamedQuery("Users.countAll");
-		
 	}
+	
+
 	
 }
