@@ -68,4 +68,17 @@ public class UserServices {
 		listUser("新增使用者，成功");
 		}
 	}
+
+	public void editUser() throws ServletException, IOException {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		Users user = userDAO.get(userId);
+		
+		String editPage = "user_form.jsp";
+		request.setAttribute("user", user);
+//		System.out.println(user.getFullName());
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
+		
+	}
 }
