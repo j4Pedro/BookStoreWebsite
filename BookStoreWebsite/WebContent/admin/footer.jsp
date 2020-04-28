@@ -1,5 +1,4 @@
 <div align="center">
-	<h4> Administration Footer</h4>
-	<h4> Copyright &copy; 2020 Bookstore Demo</h4>
-
+	<h5> Administration Footer</h5>
+	<h5> Copyright &copy; 2020 Bookstore Demo</h5>
 </div>

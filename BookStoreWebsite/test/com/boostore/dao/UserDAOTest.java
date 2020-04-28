@@ -36,7 +36,6 @@ public class UserDAOTest {
 		user1.setEmail("Frank@email.com");
 		user1.setFullName("Frank Smith");
 		user1.setPassword("Fpass");
-
 		user1 = userDAO.create(user1);
 
 		assertTrue(user1.getUserId() > 0);
