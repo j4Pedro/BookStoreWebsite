@@ -24,19 +24,17 @@ public class UserServices {
 	public UserServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
-				
+
 		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
 		entityManager = entityManagerFactory.createEntityManager();
 		userDAO = new UserDAO(entityManager);
 	}
 
-	public void listUser()
-			throws ServletException, IOException {
+	public void listUser() throws ServletException, IOException {
 		listUser(null);
 	}
 
-	public void listUser(String message)
-			throws ServletException, IOException {
+	public void listUser(String message) throws ServletException, IOException {
 		List<Users> listUsers = userDAO.listAll();
 
 		request.setAttribute("listUsers", listUsers);
@@ -52,12 +50,22 @@ public class UserServices {
 
 	}
 
-	public void createUser() {
+	public void createUser() throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-
+		
+		Users existUser = userDAO.findByEmail(email);
+		
+		if(existUser != null) {
+			String message = "註冊失敗: "+email+" 已經被使用";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+			dispatcher.forward(request, response);
+		}else {
 		Users newUser = new Users(email, fullName, password);
 		userDAO.create(newUser);
+		listUser("新增使用者，成功");
+		}
 	}
 }
