@@ -81,4 +81,32 @@ public class UserServices {
 		requestDispatcher.forward(request, response);
 		
 	}
+
+	public void updateUser() throws ServletException, IOException {
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String email = request.getParameter("email");
+		String fullName = request.getParameter("fullname");
+		String password = request.getParameter("password");
+		
+		Users userById = userDAO.get(userId);
+		
+		Users userByEmail = userDAO.findByEmail(email);
+		
+		if(userByEmail != null && userByEmail.getUserId() != userById.getUserId()) {
+			String message = "無法更新， "+email+" 已存在";
+			request.setAttribute("message", message);
+			
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+			
+		} else {
+			Users user = new Users(userId, email, fullName, password);
+			userDAO.update(user);
+			
+			String message = "更新成功(Updated Successfully)";
+			listUser(message);
+		}
+		
+
+	}
 }

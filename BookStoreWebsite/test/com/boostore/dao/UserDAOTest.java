@@ -51,9 +51,9 @@ public class UserDAOTest {
 	@Test
 	public void testUpdateUser() {
 		Users user = new Users();
-		user.setUserId(2);
-		user.setEmail("Bob@email.com");
-		user.setFullName("Bob");
+		user.setUserId(22);
+		user.setEmail("Bob2@email.com");
+		user.setFullName("Bob2");
 		user.setPassword("Bpass");
 
 		user = userDAO.update(user);
