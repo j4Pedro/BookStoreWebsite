@@ -54,32 +54,52 @@ public class UserServices {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-		
+
 		Users existUser = userDAO.findByEmail(email);
-		
-		if(existUser != null) {
-			String message = "註冊失敗: "+email+" 已經被使用";
+
+		if (existUser != null) {
+			String message = "註冊失敗: " + email + " 已經被使用";
 			request.setAttribute("message", message);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
 			dispatcher.forward(request, response);
-		}else {
-		Users newUser = new Users(email, fullName, password);
-		userDAO.create(newUser);
-		listUser("新增使用者，成功");
+		} else {
+			Users newUser = new Users(email, fullName, password);
+			userDAO.create(newUser);
+			listUser("新增使用者，成功");
 		}
 	}
-
+//測試
+//	public void editUser() throws ServletException, IOException {
+//		int userId = Integer.parseInt(request.getParameter("id"));
+//		Users user = userDAO.get(userId);
+//		String editPage = "user_form.jsp";
+//
+//		if (user != null) {
+//			request.setAttribute("user", user);
+//
+//		} else {
+//			String message = "Error"+ userId+" has been used";
+//			request.setAttribute("message", message);
+//		}
+//
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+//		requestDispatcher.forward(request, response);
+//
+//	}
 	public void editUser() throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		Users user = userDAO.get(userId);
-		
-		String editPage = "user_form.jsp";
-		request.setAttribute("user", user);
-//		System.out.println(user.getFullName());
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		Users user = userDAO.get(userId );
+		String destPage = "user_form.jsp";
+	
+		if (user == null) {
+			destPage = "message.jsp";
+			String errorMessage = "Could not find user with ID " + userId;
+			request.setAttribute("message", errorMessage);
+		} else {
+			request.setAttribute("user", user);			
+		}
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destPage);
 		requestDispatcher.forward(request, response);
-		
 	}
 
 	public void updateUser() throws ServletException, IOException {
@@ -87,26 +107,50 @@ public class UserServices {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-		
+
 		Users userById = userDAO.get(userId);
-		
+
 		Users userByEmail = userDAO.findByEmail(email);
-		
-		if(userByEmail != null && userByEmail.getUserId() != userById.getUserId()) {
-			String message = "無法更新， "+email+" 已存在";
+
+		if (userByEmail != null && userByEmail.getUserId() != userById.getUserId()) {
+			String message = "無法更新， " + email + " 已存在";
 			request.setAttribute("message", message);
-			
+
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
 			requestDispatcher.forward(request, response);
-			
+
 		} else {
 			Users user = new Users(userId, email, fullName, password);
 			userDAO.update(user);
-			
+
 			String message = "更新成功(Updated Successfully)";
 			listUser(message);
 		}
-		
 
+	}
+
+	public void deleteUser() throws ServletException, IOException {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		Users userById = userDAO.get(userId);
+		
+	
+		if (userById == null) {
+			String message = "ID does not exist";
+			listUser(message);
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+			
+		}else if((userId == 18)){
+			String message = "Admin cannot be deleted";
+			listUser(message);
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+		}else{
+			userDAO.delete(userId);	
+		}
+		String message = " Delete successfully ";
+		listUser(message);
 	}
 }

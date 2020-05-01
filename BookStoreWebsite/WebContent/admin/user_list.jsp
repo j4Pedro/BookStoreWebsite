@@ -17,7 +17,7 @@
 		<h2>使用者管理</h2>
 		<h3><a href="user_form.jsp">新增使用者</a></h3>
 	</div>
-	<<c:if test="${message != null}">
+	<c:if test="${message != null}">
 	<div align="center">
 		<h4><i>${message}</i></h4>
 	</div>	
@@ -41,7 +41,7 @@
 					<td>${user.fullName}</td>
 					<td>
 						<a href="edit_user?id=${user.userId}">修改</a>
-						<a href="">刪除</a>
+						<a href="javascript:confirmDelete(${user.userId})">刪除</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -50,6 +50,13 @@
 	</div>
 
 	<jsp:directive.include file="footer.jsp" />
+	<script>
+		function confirmDelete(userId){
+			if(confirm("確定要刪除 ID:"+userId+" ??")){
+				window.location="delete_user?id="+ userId;
+			}
+		}
+	</script>
 </body>
 
 </html>
