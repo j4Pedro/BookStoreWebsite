@@ -1,5 +1,4 @@
 package com.boostore.entity;
-// Generated 2020/4/20 ¤U¤È 01:37:44 by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;

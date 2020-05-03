@@ -1,4 +1,4 @@
-package com.boostore.controller.admin;
+package com.boostore.controller.admin.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,11 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.boostore.controller.admin.BaseServlet;
 import com.boostore.service.UserServices;
 
 
 @WebServlet("/admin/list_users")
-public class ListUserServlet extends HttpServlet {
+public class ListUserServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -20,7 +21,7 @@ public class ListUserServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices = new UserServices(request, response);
+		UserServices userServices = new UserServices(entityManager,request, response);
 		userServices.listUser();
 	}
 }

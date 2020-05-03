@@ -40,7 +40,7 @@
 					<td>${user.email}</td>
 					<td>${user.fullName}</td>
 					<td>
-						<a href="edit_user?id=${user.userId}">­×§ï</a>
+						<a href="edit_user?id=${user.userId}">­×§ï</a>||
 						<a href="javascript:confirmDelete(${user.userId})">§R°£</a>
 					</td>
 				</tr>
