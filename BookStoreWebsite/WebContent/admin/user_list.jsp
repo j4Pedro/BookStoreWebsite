@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-	pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="BIG5">
+<meta charset="UTF-8">
 <title>Manage Users - Bookstore Administration</title>
 </head>
 <body>
@@ -14,8 +14,8 @@
 	<jsp:directive.include file="header.jsp" />
 
 	<div align="center">
-		<h2>¨Ï¥ÎªÌºŞ²z</h2>
-		<h3><a href="user_form.jsp">·s¼W¨Ï¥ÎªÌ</a></h3>
+		<h2>ä½¿ç”¨è€…ç®¡ç†</h2>
+		<h3><a href="user_form.jsp">æ–°å¢ä½¿ç”¨è€…</a></h3>
 	</div>
 	<c:if test="${message != null}">
 	<div align="center">
@@ -40,8 +40,8 @@
 					<td>${user.email}</td>
 					<td>${user.fullName}</td>
 					<td>
-						<a href="edit_user?id=${user.userId}">­×§ï</a>||
-						<a href="javascript:confirmDelete(${user.userId})">§R°£</a>
+						<a href="edit_user?id=${user.userId}">ä¿®æ”¹</a>||
+						<a href="javascript:confirmDelete(${user.userId})">åˆªé™¤</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -52,7 +52,7 @@
 	<jsp:directive.include file="footer.jsp" />
 	<script>
 		function confirmDelete(userId){
-			if(confirm("½T©w­n§R°£ ID:"+userId+" ??")){
+			if(confirm("ç¢ºå®šè¦åˆªé™¤ ID:"+userId+" ??")){
 				window.location="delete_user?id="+ userId;
 			}
 		}

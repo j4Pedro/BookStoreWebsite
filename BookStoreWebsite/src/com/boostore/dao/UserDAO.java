@@ -10,7 +10,7 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
 	public UserDAO(EntityManager entityManager) {
 		super(entityManager);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override
