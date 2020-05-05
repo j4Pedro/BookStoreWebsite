@@ -107,7 +107,6 @@ public class UserServices {
 		String password = request.getParameter("password");
 
 		Users userById = userDAO.get(userId);
-
 		Users userByEmail = userDAO.findByEmail(email);
 
 		if (userByEmail != null && userByEmail.getUserId() != userById.getUserId()) {
