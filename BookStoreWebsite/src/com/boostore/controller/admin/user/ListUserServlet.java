@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.boostore.controller.admin.BaseServlet;
+import com.boostore.controller.BaseServlet;
 import com.boostore.service.UserServices;
 
 @WebServlet("/admin/list_users")

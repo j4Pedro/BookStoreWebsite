@@ -2,19 +2,43 @@
 	pageEncoding="UTF-8"%>
 
 <div align="center">
-	<img src="../images/logo_admin.gif" alt="" />
-	
+	<img src="../images/logo_admin.gif"/>
+
 	<div>
-	Welcome, Admin | <a href="logout">logout</a>
+		Welcome, Admin | <a href="logout">logout</a>
 	</div>
-	<div>
-		<b>
-		<a href="list_users">Users使用者</a>
-		<a href="list_category">Categories</a>
-		<a href="book">Book</a>
-		<a href="customers">Customers</a>
-		<a href="reviews">Reviews</a>
-		<a href="orders">Orders</a>
-		</b>
+	<div id="headermenu" >
+		<div>
+			<a href="list_users"> <img src="../images/users.png" /><br/>Users
+			</a>
+		</div>
+
+		<div>
+			<a href="list_category">
+				<img src="../images/category.png" alt="" /><br/>Categories
+			</a>
+		</div>
+		<div>
+			<a href="book">
+				<img src="../images/book.png"/><br/>Books
+			</a>
+		</div>
+		<div>
+			<a href="customers">
+				<img src="../images/customer.png" /><br/>Customers
+			</a>
+		</div>
+		<div>
+			<a href="reviews">
+				<img src="../images/review.png" /><br/>Reviews
+			</a>
+		</div>
+		<div>
+			<a href="orders">
+				<img src="../images/order.png"/><br/>Orders
+			</a>
+		</div>
+
+
 	</div>
 </div>

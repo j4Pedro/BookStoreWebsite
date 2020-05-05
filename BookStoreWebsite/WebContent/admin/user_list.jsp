@@ -6,20 +6,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Manage Users - Bookstore Administration</title>
+	<meta charset="UTF-8">
+	<title>Manage Users - Bookstore Administration</title>
+	<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 
 	<jsp:directive.include file="header.jsp" />
 
 	<div align="center">
-		<h2>使用者管理</h2>
-		<h3><a href="user_form.jsp">新增使用者</a></h3>
+		<h2 class="pageheading">User Management 使用者管理</h2>
+		<h3><a href="user_form.jsp">Create New User 新增使用者</a></h3>
 	</div>
 	<c:if test="${message != null}">
 	<div align="center">
-		<h4><i>${message}</i></h4>
+		<h4 class="message">${message}</h4>
 	</div>	
 	</c:if>
 
