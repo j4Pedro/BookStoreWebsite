@@ -15,7 +15,11 @@ public class AdminHomeServlet extends HttpServlet {
 
 	public AdminHomeServlet() {
 		super();
+	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +27,6 @@ public class AdminHomeServlet extends HttpServlet {
 		String path = "index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
-
 	}
 
 }
