@@ -9,6 +9,9 @@
 	<meta charset="UTF-8">
 	<title>Manage Users - Bookstore Administration</title>
 	<link rel="stylesheet" href="../css/style.css" />
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+	
 </head>
 <body>
 
@@ -42,7 +45,7 @@
 					<td>${user.fullName}</td>
 					<td>
 						<a href="edit_user?id=${user.userId}">修改</a>||
-						<a href="javascript:confirmDelete(${user.userId})">刪除</a>
+						<a href="javascript:void(0);"class ="deleteLink" id="${user.userId}">刪除</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -52,11 +55,17 @@
 
 	<jsp:directive.include file="footer.jsp" />
 	<script>
-		function confirmDelete(userId){
-			if(confirm("確定要刪除 ID:"+userId+" ??")){
-				window.location="delete_user?id="+ userId;
-			}
-		}
+		$(document).ready(function(){
+			$(".deleteLink").each(function(){
+				$(this).on("click",function(){
+					userId= $(this).attr("id");
+					if(confirm("Are you sure you want to delete ID:"+userId+" ??")){
+						window.location="delete_user?id="+ userId;
+					}
+				});
+			});
+		});
+
 	</script>
 </body>
 

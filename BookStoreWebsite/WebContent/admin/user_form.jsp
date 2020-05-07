@@ -9,13 +9,9 @@
 	<link rel="stylesheet" href="../css/style.css" />
 	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
-	
-	
 </head>
 <body>
-
 	<jsp:directive.include file="header.jsp" />
-
 	<div align="center">
 		<h2 class="pageheading">
 			<c:if test="${user != null}">
@@ -32,7 +28,7 @@
 			<input type="hidden" name="userId" value="${user.userId}" />
 		</c:if>
 		<c:if test="${user == null}">
-			<form action="create_user" method="post">
+			<form action="create_user" method="post" id="userform">
 		</c:if>
 		
 			<table class="form">
@@ -57,7 +53,7 @@
 				<tr>
 					<td colspan="2" align="center">
 					<button type="submit">Save</button>&nbsp;&nbsp;&nbsp;
-					<button onclick="javascript:history.go(-1);">Cancel</button>
+					<button id="buttonCancel">Cancel</button>
 				</tr>
 			</table>
 		</form>
@@ -69,39 +65,28 @@
 	$(document).ready(function(){
 		$("#userform").validate({
 			rules:{
-				email:"required",
+				email:{
+					required:true,
+					email:true
+				},
 				fullname:"required",
 				password:"required",
 			},
 			messages:{
-				email:"Please enter email",
+				email:{
+					required:"Please enter email",
+					email:"Please enter an vaild address"
+				},
+				
 				fullname:"Please enter fullname",
 				password:"Please enter password"
 			}
-		});	
+		});
+		
+		$("#buttonCancel").click(function(){
+			history.go(-1);
+		});
 	});
 
-	function validateFormInput() {
-		var fieldEmail = document.getElementById("email");
-		var fieldFullName = document.getElementById("fullname");
-		var fieldPassword = document.getElementById("password");
-
-		if (fieldEmail.value.length == 0) {
-			alert("email 不能空白");
-			fieldEmail.focus();
-			return false;
-		}
-		if (fieldFullName.value.length == 0) {
-			alert("全名  不能空白");
-			fieldFullName.focus();
-			return false;
-		}
-		if (fieldPassword.value.length == 0) {
-			alert("密碼  不能空白");
-			fieldPassword.focus();
-			return false;
-		}
-		return true;
-	}
 </script>
 </html>

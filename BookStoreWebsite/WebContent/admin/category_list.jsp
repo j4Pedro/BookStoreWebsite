@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../css/style.css" />
-<meta charset="UTF-8">
-<title>Manage Categories - Bookstore Administration</title>
+	<link rel="stylesheet" href="../css/style.css" />
+	<meta charset="UTF-8">
+	<title>Manage Categories - Bookstore Administration</title>
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -43,7 +43,7 @@
 					<td>${cat.name}</td>
 					<td>
 						<a href="edit_category?id=${cat.categoryId}">Edit</a>|| 
-						<a href="javascript:confirmDelete(${cat.categoryId})">Delete</a>
+						<a href="javascript:void(0)" class="deleteLink" id="${cat.categoryId}">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -52,11 +52,18 @@
 
 	<jsp:directive.include file="footer.jsp" />
 	<script>
-		function confirmDelete(categoryId) {
-			if (confirm("確定要刪除 ID:" + categoryId + " ??")) {
-				window.location = "delete_category?id=" + categoryId;
-			}
-		}
+	
+	$(document).ready(function(){
+		$(".deleteLink").each(function(){
+			$(this).on("click",function(){
+				categoryId= $(this).attr("id");
+				if(confirm("Are you sure you want to delete ID:"+categoryId+" ??")){
+					window.location="delete_category?id="+ categoryId;
+				}
+			});
+		});
+	});
+
 	</script>
 </body>
 

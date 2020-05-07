@@ -2,20 +2,22 @@
 	pageEncoding="UTF-8"%>
 
 <div align="center">
-	<img src="../images/logo_admin.gif"/>
-
+	<div>
+		<img src="../images/logo_admin.gif"/>
+	</div>
 	<div>
 		Welcome, Admin | <a href="logout">logout</a>
+		<br /><br />
 	</div>
 	<div id="headermenu" >
 		<div>
-			<a href="list_users"> <img src="../images/users.png" /><br/>Users
+			<a href="list_users">
+				<img src="../images/users.png" /><br/>Users
 			</a>
 		</div>
-
-		<div>
+		<div >
 			<a href="list_category">
-				<img src="../images/category.png" alt="" /><br/>Categories
+				<img src="../images/category.png" /><br/>Categories
 			</a>
 		</div>
 		<div>
@@ -38,7 +40,5 @@
 				<img src="../images/order.png"/><br/>Orders
 			</a>
 		</div>
-
-
 	</div>
 </div>
