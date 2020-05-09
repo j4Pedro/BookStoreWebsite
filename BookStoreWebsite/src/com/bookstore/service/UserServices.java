@@ -90,6 +90,10 @@ public class UserServices {
 			String errorMessage = "Could not find user with ID " + userId;
 			request.setAttribute("message", errorMessage);
 		} else {
+			// set password as null to make the password is left blank by default
+			// if left blank, the user's password won't be updated
+			// this is to work with the encrypted password feature
+			user.setPassword(null);
 			request.setAttribute("user", user);			
 		}
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destPage);
