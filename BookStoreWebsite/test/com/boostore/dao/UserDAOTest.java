@@ -9,7 +9,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.boostore.entity.Users;
+import com.bookstore.dao.UserDAO;
+import com.bookstore.entity.Users;
 
 public class UserDAOTest extends BaseDAOTest{
 

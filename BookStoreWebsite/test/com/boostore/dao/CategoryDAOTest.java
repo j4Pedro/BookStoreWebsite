@@ -8,7 +8,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.boostore.entity.Category;
+import com.bookstore.dao.CategoryDAO;
+import com.bookstore.entity.Category;
 
 public class CategoryDAOTest extends BaseDAOTest {
 
