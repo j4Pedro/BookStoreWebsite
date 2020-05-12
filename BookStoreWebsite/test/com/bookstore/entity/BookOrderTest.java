@@ -1,4 +1,4 @@
-package com.boostore.entity;
+package com.bookstore.entity;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package com.boostore.dao;
+package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
