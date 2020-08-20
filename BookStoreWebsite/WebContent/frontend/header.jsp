@@ -21,8 +21,7 @@
 			</a>
 			<c:if test="${not status.last}">
 				&nbsp; |&nbsp; 
-			</c:if>
-			
+			</c:if>			
 		</c:forEach>
 	</div>
 </div>

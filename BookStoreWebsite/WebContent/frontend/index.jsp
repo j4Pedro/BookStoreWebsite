@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="BIG5">
+<meta charset="UTF-8">
 <title>Alex Books - Online Books Store</title>
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
